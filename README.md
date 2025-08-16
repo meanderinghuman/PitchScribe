@@ -49,7 +49,7 @@ Before you begin, ensure you have the following:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/yourusername/pitchscribe.git](https://github.com/yourusername/pitchscribe.git)
+    git clone [https://github.com/meanderinghuman/pitchscribe.git](https://github.com/meanderinghuman/pitchscribe.git)
     cd pitchscribe
     ```
 

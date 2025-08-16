@@ -1,37 +1,127 @@
-# Investment-memo-LLM
-Generate VC-grade investment memos using LLMs.
+# PitchScribe ✍️
 
-Investment Memo Generator
-This script is designed to generate an investment memo using OpenAI's language model, prompt the user for input, and then save the memo as a text file and send it via email. The script uses the langchain library to interact with OpenAI's language model and the smtplib library to send emails.
+<div align="center">
 
-# Prerequisites
-Before running this script, you need to have an OpenAI API key. You can obtain one by signing up for OpenAI's GPT-3 program. Additionally, you will need to have Python 3 and the following libraries installed:
+_AI-powered tool to generate professional, VC-grade investment memos in seconds._
 
-- ```openai```
-- ```smtplib```
-- ```ssl```
-- ```datetime```
-- ```langchain```
+</div>
 
-# Setup
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.8+-blue.svg" alt="Python Version">
+  <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
+  <img src="https://img.shields.io/badge/Built%20with-LangChain-purple.svg" alt="LangChain">
+  <img src="https://img.shields.io/badge/Powered%20by-OpenAI-black.svg" alt="OpenAI">
+</p>
 
-- Clone the repository or download the script.
-- Install the required libraries by running pip install -r requirements.txt in the terminal.
-- Enter your OpenAI API key in the script by replacing the empty string with your API key: ```os.environ["OPENAI_API_KEY"] = "" #Enter your OpenAI API key here```
-- Enter your email provider's SMTP server in the sendEmail function: ```smtp_server = "smtp.gmail.com" #Enter your email provider's SMTP server here - Yahoo doesn't work```
-- If you want to load the password from a text file, comment out the hardcoded password line and uncomment the loadPassword() line in the sendEmail function.
+---
 
-# How to Use
+**PitchScribe** helps investors, founders, and analysts quickly create structured, venture-capital-grade investment memos using Large Language Models (LLMs). The tool prompts you for startup details, generates a polished and insightful memo, saves it locally, and can even deliver it directly to your inbox.
 
-To use the script, run it from the command line using python investment_memo_generator.py. The script will prompt you for input, including the name of the company you want to create an investment memo for and the email addresses of the sender and receiver.
+## 🚀 Features
 
-Once you provide the necessary inputs, the script will generate an investment memo using OpenAI's language model, format it, save it as a text file, and send it via email. You will be prompted to enter a filename for the saved memo.
+-   🤖 **AI-Powered Memo Generation**: Leverages cutting-edge LLMs to create comprehensive and structured investment memos.
+-   💬 **Custom Prompts & Follow-ups**: Easily input company details or ask follow-up questions to generate deeper insights.
+-   🧠 **Conversation Memory**: Retains context throughout your session using LangChain’s powerful memory module.
+-   💾 **Flexible Export Options**: Save your generated memos as clean `.txt` files for easy access and sharing.
+-   📧 **Email Integration**: Send memos directly from the command line using a secure SMTP connection.
+-   ⚙️ **Easy Setup**: Get up and running in minutes with minimal configuration.
 
-The script also includes an option to ask for more information about the company. If you choose this option, the script will prompt you for a question and use OpenAI's language model to generate a response.
+---
 
-Notes
+## 🛠️ Getting Started
 
-- The langchain library is used to interact with OpenAI's language model. The LLMChain class is used to set up the model, and the PromptTemplate class is used to customize the input prompt.
-- The ConversationBufferMemory class is used to store previous conversation history and improve the accuracy of the language model's responses.
-- The sendEmail function uses the smtplib library to send emails via SMTP. You will need to enter your email provider's SMTP server and your email address and password to use this function.
-The saveMemo function saves the investment memo as a text file. You will be prompted to enter a filename for the saved file.
+Follow these steps to set up and run PitchScribe on your local machine.
+
+### 📦 Prerequisites
+
+Before you begin, ensure you have the following:
+
+-   **Python 3.8+**
+-   An **OpenAI API Key**. You can get one from the [OpenAI Platform](https://platform.openai.com/).
+-   The following Python libraries:
+    -   `openai`
+    -   `langchain`
+    -   `smtplib`
+    -   `ssl`
+    -   `datetime`
+
+### ⚙️ Installation & Configuration
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/yourusername/pitchscribe.git](https://github.com/yourusername/pitchscribe.git)
+    cd pitchscribe
+    ```
+
+2.  **Install dependencies:**
+    It's recommended to use a virtual environment.
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    pip install -r requirements.txt
+    ```
+
+3.  **Add your OpenAI API Key:**
+    Open the script and find the following line to add your key.
+    ```python
+    # WARNING: It's recommended to use environment variables for production.
+    os.environ["OPENAI_API_KEY"] = "your_api_key_here"
+    ```
+    > **⚠️ Important**: Do not commit your API key to a public repository.
+
+4.  **Configure your email (Optional):**
+    If you want to use the email feature, configure your SMTP server details inside the `sendEmail` function.
+    ```python
+    smtp_server = "smtp.gmail.com"  # Example for Gmail
+    port = 587  # For starttls
+    ```
+    > **Note**: Yahoo is not supported. For Gmail, you may need to enable "Less secure app access" or generate an "App Password" for your account.
+
+---
+
+## ▶️ How to Use
+
+Run the script directly from your command line:
+
+```bash
+python pitchscribe.py
+The application will prompt you for:
+
+Company/startup details to analyze.
+
+Sender & receiver email addresses (if you choose to send the memo).
+
+A filename to save the memo locally.
+
+The script will then:
+
+Generate a comprehensive investment memo.
+
+Save it as a .txt file in the project directory.
+
+Optionally, send the memo to the specified recipient via email.
+
+👉 You can also ask additional questions about the company after the initial memo is generated. PitchScribe will use the conversation history to provide context-aware insights in real-time.
+
+📝 How It Works
+LangChain: Manages the core LLM pipeline, from prompting to response generation.
+
+LLMChain + PromptTemplate: Handle the creation of dynamic, structured prompts based on user input.
+
+ConversationBufferMemory: Stores the session history, allowing for context-aware follow-up questions.
+
+SMTP + SSL: Ensure the secure delivery of memos via email.
+
+saveMemo function: Handles the local saving of generated memos for future reference.
+
+🔮 Future Roadmap
+[ ] Enhanced Export Options: Add support for PDF and Docx formats.
+
+[ ] Cloud Integrations: Connect with Notion and Google Docs for seamless workflow integration.
+
+[ ] Collaboration Features: Introduce multi-user support for team-based memo creation.
+
+[ ] Web Interface: Develop an interactive web-based UI using Streamlit or Gradio.
+
+📄 License
+This project is licensed under the MIT License. See the LICENSE file for more details.
